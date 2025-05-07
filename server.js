@@ -1,19 +1,11 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const app = express();
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
-
-// Database connection
-const pool = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'soloparent'
-});
+const { pool, queryDatabase } = require('./database');
 
 // Enable CORS for all routes
 const allowedOrigins = [
