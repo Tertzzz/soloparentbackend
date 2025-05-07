@@ -5,7 +5,14 @@ const bodyParser = require('body-parser');
 const app = express();
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
-const { pool, queryDatabase } = require('./database');
+const mysql = require ('mysql2')
+
+const pool = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
+})
 
 // Enable CORS for all routes
 const allowedOrigins = [
