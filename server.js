@@ -1,10 +1,19 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const app = express();
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
+
+// Database connection
+const pool = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'soloparent'
+});
 
 // Enable CORS for all routes
 const allowedOrigins = [
@@ -35,8 +44,6 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
-
-const { pool, queryDatabase } = require('./database');
 
 // Add logging middleware
 app.use((req, res, next) => {
