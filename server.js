@@ -9,8 +9,7 @@ const crypto = require('crypto');
 // Enable CORS for all routes
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://host-solo-parent.vercel.app',
-  'https://host-solo-parent-6knb.vercel.app'
+  'https://soloparentfrontend.vercel.app/',
 ];
 
 app.use(cors({
